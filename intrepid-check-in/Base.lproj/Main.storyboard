@@ -16,23 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9a-4q-RFX">
-                                <rect key="frame" x="245" y="275" width="111" height="30"/>
-                                <state key="normal" title="Start Monitoring">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebh-Zs-SNW">
+                                <rect key="frame" x="213" y="207" width="175" height="30"/>
+                                <state key="normal" title="Start Monitoring Location">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="monitorLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9dR-rN-5FM"/>
+                                    <action selector="startMonitoringLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G4m-W9-7d4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIj-z9-i2T">
+                                <rect key="frame" x="213" y="392" width="174" height="30"/>
+                                <state key="normal" title="Stop Monitoring Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopMonitoringLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cKh-sM-a0h"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="e9a-4q-RFX" secondAttribute="centerX" constant="-0.5" id="DRb-bx-nhL"/>
+                            <constraint firstAttribute="centerX" secondItem="NIj-z9-i2T" secondAttribute="centerX" id="25A-nD-yqe"/>
+                            <constraint firstAttribute="centerX" secondItem="ebh-Zs-SNW" secondAttribute="centerX" constant="-0.5" id="H6H-Sx-5It"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="monitorButton" destination="e9a-4q-RFX" id="9CD-T2-j89"/>
+                        <outlet property="startButton" destination="ebh-Zs-SNW" id="Ghq-44-JKk"/>
+                        <outlet property="stopButton" destination="NIj-z9-i2T" id="z35-GK-1Re"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

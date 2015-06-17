@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CE1B65E0BFC39656B760E25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A78A6C1BA9678B145400DF8 /* libPods.a */; };
 		BA1A1BA91B30A3420003A370 /* intrepidOffice.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */; };
+		BA4D3B0C1B31BFD000C689D8 /* SlackRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */; };
 		BA4EA3191B305C3500E9896E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA3181B305C3500E9896E /* main.m */; };
 		BA4EA31C1B305C3500E9896E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA31B1B305C3500E9896E /* AppDelegate.m */; };
 		BA4EA31F1B305C3500E9896E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA31E1B305C3500E9896E /* ViewController.m */; };
@@ -29,7 +31,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D1DA98131550AE67A1D1663 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6A78A6C1BA9678B145400DF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5DE7A859786E40C69D4D5BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = intrepidOffice.gpx; path = ../../../Desktop/intrepidOffice.gpx; sourceTree = "<group>"; };
+		BA4D3B0A1B31BFD000C689D8 /* SlackRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlackRequestManager.h; sourceTree = "<group>"; };
+		BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlackRequestManager.m; sourceTree = "<group>"; };
 		BA4EA3131B305C3500E9896E /* intrepid-check-in.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intrepid-check-in.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4EA3171B305C3500E9896E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4EA3181B305C3500E9896E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -52,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4EA33D1B30749600E9896E /* CoreLocation.framework in Frameworks */,
+				7CE1B65E0BFC39656B760E25 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2E8B03D9D2CC3A51F3DE43D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A78A6C1BA9678B145400DF8 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA4EA30A1B305C3500E9896E = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +89,8 @@
 				BA4EA3151B305C3500E9896E /* intrepid-check-in */,
 				BA4EA32F1B305C3500E9896E /* intrepid-check-inTests */,
 				BA4EA3141B305C3500E9896E /* Products */,
+				DA0AECE3EEB1CC0862BE144D /* Pods */,
+				A2E8B03D9D2CC3A51F3DE43D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +110,8 @@
 				BA4EA31B1B305C3500E9896E /* AppDelegate.m */,
 				BA4EA31D1B305C3500E9896E /* ViewController.h */,
 				BA4EA31E1B305C3500E9896E /* ViewController.m */,
+				BA4D3B0A1B31BFD000C689D8 /* SlackRequestManager.h */,
+				BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */,
 				BA4EA3201B305C3500E9896E /* Main.storyboard */,
 				BA4EA3231B305C3500E9896E /* Images.xcassets */,
 				BA4EA3251B305C3500E9896E /* LaunchScreen.xib */,
@@ -126,6 +146,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DA0AECE3EEB1CC0862BE144D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D1DA98131550AE67A1D1663 /* Pods.debug.xcconfig */,
+				A5DE7A859786E40C69D4D5BD /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA4EA3361B305C3500E9896E /* Build configuration list for PBXNativeTarget "intrepid-check-in" */;
 			buildPhases = (
+				DF651243F8B55EFFA140E9E9 /* Check Pods Manifest.lock */,
 				BA4EA30F1B305C3500E9896E /* Sources */,
 				BA4EA3101B305C3500E9896E /* Frameworks */,
 				BA4EA3111B305C3500E9896E /* Resources */,
+				636D89097CF79DA638E9C983 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +254,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		636D89097CF79DA638E9C983 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF651243F8B55EFFA140E9E9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA4EA30F1B305C3500E9896E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -230,6 +294,7 @@
 			files = (
 				BA4EA31F1B305C3500E9896E /* ViewController.m in Sources */,
 				BA4EA31C1B305C3500E9896E /* AppDelegate.m in Sources */,
+				BA4D3B0C1B31BFD000C689D8 /* SlackRequestManager.m in Sources */,
 				BA4EA3191B305C3500E9896E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +421,7 @@
 		};
 		BA4EA3371B305C3500E9896E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D1DA98131550AE67A1D1663 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -370,6 +436,7 @@
 		};
 		BA4EA3381B305C3500E9896E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5DE7A859786E40C69D4D5BD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -7,14 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "SlackRequestManager.h"
+
 @import CoreLocation;
 @import Foundation;
 @import UIKit;
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *monitorButton;
-@property (weak, nonatomic) IBOutlet UILabel *latitude;
-@property(readonly, nonatomic, copy) NSSet *geoFences;
+
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+
+
+
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLCircularRegion *intrepidOffice;
 
@@ -28,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     
 
     self.locationManager = [[CLLocationManager alloc]init]; // initializing locationManager
@@ -43,6 +49,8 @@
     if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [self.locationManager requestAlwaysAuthorization];
     }
+    
+    
     
 
 
@@ -63,7 +71,6 @@
     NSLog(@"Error: %@",error.description);
 }
 
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
 
@@ -80,11 +87,38 @@
 {
     NSLog(@"reaching did enter region");
     [self sendNotificiation];
+    [self messageSlack:@"I'm here!"];
     
-    
+
 }
 
--(void) sendNotificiation {
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    [self messageSlack:@"I'm leaving!"];
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
+{
+    NSLog(@"Region monitoring failed with error: %@", [error localizedDescription]);
+}
+
+#pragma mark - Internal Helper Methods
+
+- (void) messageSlack: (NSString *) message {
+    [[SlackRequestManager sharedManager] sendMessage:message success:^(BOOL success) {
+        NSLog(@"Here");
+    } failure:^(NSError *error) {
+        if (error == nil) {
+            NSLog(@"Nothing was downloaded");
+            
+        }
+        else {
+            NSLog(@"Error: %@", error);
+        }
+    }];
+}
+
+- (void) sendNotificiation {
     /* notification stuff */
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
@@ -99,42 +133,34 @@
     
 }
 
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
-{
-    NSLog(@"reaching did exit");
+- (IBAction)startMonitoringLocation:(id)sender {
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager startMonitoringForRegion:self.intrepidOffice];
+
 }
 
-- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
-{
-    NSLog(@"Region monitoring failed with error: %@", [error localizedDescription]);
+- (IBAction)stopMonitoringLocation:(id)sender {
+    NSLog(@"now i want to stop");
+    [self.locationManager stopMonitoringForRegion:self.intrepidOffice];
+    [self.locationManager stopUpdatingLocation];
 }
 
-/* perform action on button click here */
+
+
+
+/* perform action on button click here
 - (IBAction)monitorLocation:(id)sender {
     [self.locationManager startUpdatingLocation];
-    
     [self.locationManager startMonitoringForRegion:self.intrepidOffice];
-    
-    
-    
-  
-    
-    
-    /*
-        1. Get Location - how often?
-        2. Are you near Intrepid
-        2a. If yes:
-                i. Send notification
-                ii. Message Slack
-                (iii. prevent future check ins for x amount of time)
-        2b. If no:
-                i. Go back to get location
-    */
-    
+
+}
+- (IBAction)stopMonitoringLocation:(id)sender {
+    NSLog(@"now i want to stop");
+    [self.locationManager stopMonitoringForRegion:self.intrepidOffice];
+    [self.locationManager stopUpdatingLocation];
 }
 
-
-
+ */
 
 
 @end
