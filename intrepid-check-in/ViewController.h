@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController <CLLocationManagerDelegate> {
     BOOL _didStartMonitoringRegion;
 }
+-(void) sendNotificiation;
 
 @end
 

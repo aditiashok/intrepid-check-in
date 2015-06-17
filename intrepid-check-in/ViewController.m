@@ -9,6 +9,7 @@
 #import "ViewController.h"
 @import CoreLocation;
 @import Foundation;
+@import UIKit;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *monitorButton;
@@ -33,7 +34,7 @@
     self.locationManager.delegate = self; // we set the delegate of locationManager to self.
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; // setting the accuracy
     
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(-71.08021, 42.367010);
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(42.367010, -71.08021);
     self.intrepidOffice = [[CLCircularRegion alloc] initWithCenter:location
                                                             radius:100
                                                         identifier:@"intrepidOffice"];
@@ -78,6 +79,24 @@
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     NSLog(@"reaching did enter region");
+    [self sendNotificiation];
+    
+    
+}
+
+-(void) sendNotificiation {
+    /* notification stuff */
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"Entering Intrepid";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
