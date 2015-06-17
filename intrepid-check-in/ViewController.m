@@ -50,6 +50,8 @@
         [self.locationManager requestAlwaysAuthorization];
     }
     
+    [self.startButton setBackgroundColor:[UIColor grayColor]];
+    [self.stopButton setBackgroundColor:[UIColor grayColor]];
     
     
 
@@ -85,8 +87,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    NSLog(@"reaching did enter region");
-    [self sendNotificiation];
+    [self sendNotificiation:@"Entering Intrepid"];
+    [self sendAlert:@"Entering Intrepid"];
     [self messageSlack:@"I'm here!"];
     
 
@@ -94,6 +96,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
+    [self sendNotificiation:@"Leaving Intrepid"];
+    [self sendAlert:@"Leaving Intrepid"];
     [self messageSlack:@"I'm leaving!"];
 }
 
@@ -118,7 +122,7 @@
     }];
 }
 
-- (void) sendNotificiation {
+- (void) sendNotificiation: (NSString *) message {
     /* notification stuff */
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
@@ -126,41 +130,43 @@
     
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.alertBody = @"Entering Intrepid";
+    localNotification.alertBody = message;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 
     
 }
 
+- (void) sendAlert: (NSString *) message {
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Location Change!"
+                              message:message
+                              delegate:self
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:@"OK", nil];
+    
+    [alertView show];
+}
+
 - (IBAction)startMonitoringLocation:(id)sender {
+    [self.stopButton setBackgroundColor:[UIColor grayColor]];
+    [self.startButton setBackgroundColor:[UIColor greenColor]];
+    
     [self.locationManager startUpdatingLocation];
     [self.locationManager startMonitoringForRegion:self.intrepidOffice];
 
 }
 
 - (IBAction)stopMonitoringLocation:(id)sender {
-    NSLog(@"now i want to stop");
+    [self.startButton setBackgroundColor:[UIColor grayColor]];
+    [self.stopButton setBackgroundColor:[UIColor greenColor]];
     [self.locationManager stopMonitoringForRegion:self.intrepidOffice];
     [self.locationManager stopUpdatingLocation];
+    
+    
 }
 
 
-
-
-/* perform action on button click here
-- (IBAction)monitorLocation:(id)sender {
-    [self.locationManager startUpdatingLocation];
-    [self.locationManager startMonitoringForRegion:self.intrepidOffice];
-
-}
-- (IBAction)stopMonitoringLocation:(id)sender {
-    NSLog(@"now i want to stop");
-    [self.locationManager stopMonitoringForRegion:self.intrepidOffice];
-    [self.locationManager stopUpdatingLocation];
-}
-
- */
 
 
 @end

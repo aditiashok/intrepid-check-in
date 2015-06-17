@@ -11,7 +11,7 @@
 @interface ViewController : UIViewController <CLLocationManagerDelegate> {
     BOOL _didStartMonitoringRegion;
 }
-- (void) sendNotificiation;
+
 - (void) messageSlack: (NSString *) message;
 
 
