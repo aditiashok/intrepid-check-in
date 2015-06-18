@@ -12,6 +12,7 @@
 
 + (instancetype)sharedManager;
 - (void)sendMessage:(NSString *)message
+                   :(NSString *) name
             success:(void (^)(BOOL success))success
             failure:(void (^)(NSError *error))failure;
 @end

@@ -37,10 +37,18 @@
 }
 
 - (void)sendMessage:(NSString *)message
+                   :(NSString *) name
                  success:(void (^)(BOOL success))success
                  failure:(void (^)(NSError *error))failure {
     
-    NSDictionary *params = @{@"text":message, @"username":@"aditi"};
+    NSDictionary *params = [[NSDictionary alloc] init];
+    
+    if (name != nil) {
+        params = @{@"text":message, @"username":name};
+    }
+    else {
+       params = @{@"text":message, @"username":@"unidentified-user"};
+    }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];

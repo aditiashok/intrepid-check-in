@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7CE1B65E0BFC39656B760E25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A78A6C1BA9678B145400DF8 /* libPods.a */; };
 		BA1A1BA91B30A3420003A370 /* intrepidOffice.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */; };
+		BA3EE76B1B3329BE003BBCA3 /* intrepid-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3EE76A1B3329BE003BBCA3 /* intrepid-logo.png */; };
 		BA4D3B0C1B31BFD000C689D8 /* SlackRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */; };
 		BA4EA3191B305C3500E9896E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA3181B305C3500E9896E /* main.m */; };
 		BA4EA31C1B305C3500E9896E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA31B1B305C3500E9896E /* AppDelegate.m */; };
@@ -35,6 +36,7 @@
 		6A78A6C1BA9678B145400DF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DE7A859786E40C69D4D5BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = intrepidOffice.gpx; path = ../../../Desktop/intrepidOffice.gpx; sourceTree = "<group>"; };
+		BA3EE76A1B3329BE003BBCA3 /* intrepid-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrepid-logo.png"; sourceTree = "<group>"; };
 		BA4D3B0A1B31BFD000C689D8 /* SlackRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlackRequestManager.h; sourceTree = "<group>"; };
 		BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlackRequestManager.m; sourceTree = "<group>"; };
 		BA4EA3131B305C3500E9896E /* intrepid-check-in.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "intrepid-check-in.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 		BA4EA3151B305C3500E9896E /* intrepid-check-in */ = {
 			isa = PBXGroup;
 			children = (
+				BA3EE76A1B3329BE003BBCA3 /* intrepid-logo.png */,
 				BA4EA31A1B305C3500E9896E /* AppDelegate.h */,
 				BA4EA31B1B305C3500E9896E /* AppDelegate.m */,
 				BA4EA31D1B305C3500E9896E /* ViewController.h */,
@@ -240,6 +243,7 @@
 			files = (
 				BA4EA3221B305C3500E9896E /* Main.storyboard in Resources */,
 				BA4EA3271B305C3500E9896E /* LaunchScreen.xib in Resources */,
+				BA3EE76B1B3329BE003BBCA3 /* intrepid-logo.png in Resources */,
 				BA1A1BA91B30A3420003A370 /* intrepidOffice.gpx in Resources */,
 				BA4EA3241B305C3500E9896E /* Images.xcassets in Resources */,
 			);

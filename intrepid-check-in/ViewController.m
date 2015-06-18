@@ -18,12 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
-
-
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLCircularRegion *intrepidOffice;
 
-
+@property (strong, nonatomic) NSString *name;
 
 
 
@@ -53,6 +51,8 @@
     [self.startButton setBackgroundColor:[UIColor grayColor]];
     [self.stopButton setBackgroundColor:[UIColor grayColor]];
     
+    [self enterUsername];
+    
     
 
 
@@ -62,43 +62,42 @@
     [super didReceiveMemoryWarning];
 }
 
-
-
+#pragma mark - Alert View Delegate Methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        if ([alertView textFieldAtIndex:0].text != nil) {
+            self.name = [alertView textFieldAtIndex:0].text;
+        }
+    }
+    else{
+        NSLog(@"Done");
+    }
+}
 
 
 #pragma mark - Location Manger Delegate Methods
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                        message:@"There was an error retrieving your location" delegate:nil
+                                                        cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [errorAlert show];
     NSLog(@"Error: %@",error.description);
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-
-    CLLocation *currentLocation = [locations lastObject];
-    NSString *lattitude = [NSString stringWithFormat:@"%.8f",currentLocation.coordinate.latitude];
-    NSString *longitude = [NSString stringWithFormat:@"%.8f",currentLocation.coordinate.longitude];
-
-    
-    NSLog(@"lattitude is: %@ longitude is: %@", lattitude, longitude);
-    
-}
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
     [self sendNotificiation:@"Entering Intrepid"];
     [self sendAlert:@"Entering Intrepid"];
-    [self messageSlack:@"I'm here!"];
+    [self messageSlack:@"I'm here!" :self.name];
     
-
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
     [self sendNotificiation:@"Leaving Intrepid"];
     [self sendAlert:@"Leaving Intrepid"];
-    [self messageSlack:@"I'm leaving!"];
+    [self messageSlack:@"I'm leaving!" :self.name];
 }
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
@@ -106,11 +105,19 @@
     NSLog(@"Region monitoring failed with error: %@", [error localizedDescription]);
 }
 
-#pragma mark - Internal Helper Methods
 
-- (void) messageSlack: (NSString *) message {
-    [[SlackRequestManager sharedManager] sendMessage:message success:^(BOOL success) {
-        NSLog(@"Here");
+#pragma mark - Internal Helper Methods
+- (void) enterUsername {
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"Name" message:@"Enter your name" delegate:self
+                                           cancelButtonTitle:@"Cancel" otherButtonTitles: @"Enter", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    [alert show];
+    
+}
+
+- (void) messageSlack: (NSString *) message :(NSString *) name {
+    [[SlackRequestManager sharedManager] sendMessage:message :name success:^(BOOL success) {
     } failure:^(NSError *error) {
         if (error == nil) {
             NSLog(@"Nothing was downloaded");
@@ -120,10 +127,10 @@
             NSLog(@"Error: %@", error);
         }
     }];
+
 }
 
 - (void) sendNotificiation: (NSString *) message {
-    /* notification stuff */
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
@@ -148,6 +155,7 @@
     [alertView show];
 }
 
+#pragma mark - button actions
 - (IBAction)startMonitoringLocation:(id)sender {
     [self.stopButton setBackgroundColor:[UIColor grayColor]];
     [self.startButton setBackgroundColor:[UIColor greenColor]];
