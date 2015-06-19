@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7CE1B65E0BFC39656B760E25 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A78A6C1BA9678B145400DF8 /* libPods.a */; };
 		BA1A1BA91B30A3420003A370 /* intrepidOffice.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */; };
+		BA21CE051B345FA400020C27 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21CE041B345FA400020C27 /* MapKit.framework */; };
 		BA3EE76B1B3329BE003BBCA3 /* intrepid-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BA3EE76A1B3329BE003BBCA3 /* intrepid-logo.png */; };
 		BA4D3B0C1B31BFD000C689D8 /* SlackRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */; };
 		BA4EA3191B305C3500E9896E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA3181B305C3500E9896E /* main.m */; };
@@ -19,6 +20,7 @@
 		BA4EA3271B305C3500E9896E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4EA3251B305C3500E9896E /* LaunchScreen.xib */; };
 		BA4EA3331B305C3500E9896E /* intrepid_check_inTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4EA3321B305C3500E9896E /* intrepid_check_inTests.m */; };
 		BA4EA33D1B30749600E9896E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4EA33C1B30749600E9896E /* CoreLocation.framework */; };
+		BA5D2CE91B34864A006C0712 /* LocationManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D2CE81B34864A006C0712 /* LocationManagerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		6A78A6C1BA9678B145400DF8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DE7A859786E40C69D4D5BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BA1A1BA81B30A3420003A370 /* intrepidOffice.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = intrepidOffice.gpx; path = ../../../Desktop/intrepidOffice.gpx; sourceTree = "<group>"; };
+		BA21CE041B345FA400020C27 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BA3EE76A1B3329BE003BBCA3 /* intrepid-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intrepid-logo.png"; sourceTree = "<group>"; };
 		BA4D3B0A1B31BFD000C689D8 /* SlackRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlackRequestManager.h; sourceTree = "<group>"; };
 		BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlackRequestManager.m; sourceTree = "<group>"; };
@@ -53,6 +56,8 @@
 		BA4EA3311B305C3500E9896E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA4EA3321B305C3500E9896E /* intrepid_check_inTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = intrepid_check_inTests.m; sourceTree = "<group>"; };
 		BA4EA33C1B30749600E9896E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BA5D2CE71B34864A006C0712 /* LocationManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManagerViewController.h; sourceTree = "<group>"; };
+		BA5D2CE81B34864A006C0712 /* LocationManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManagerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA21CE051B345FA400020C27 /* MapKit.framework in Frameworks */,
 				BA4EA33D1B30749600E9896E /* CoreLocation.framework in Frameworks */,
 				7CE1B65E0BFC39656B760E25 /* libPods.a in Frameworks */,
 			);
@@ -78,6 +84,7 @@
 		A2E8B03D9D2CC3A51F3DE43D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA21CE041B345FA400020C27 /* MapKit.framework */,
 				6A78A6C1BA9678B145400DF8 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -115,6 +122,8 @@
 				BA4EA31E1B305C3500E9896E /* ViewController.m */,
 				BA4D3B0A1B31BFD000C689D8 /* SlackRequestManager.h */,
 				BA4D3B0B1B31BFD000C689D8 /* SlackRequestManager.m */,
+				BA5D2CE71B34864A006C0712 /* LocationManagerViewController.h */,
+				BA5D2CE81B34864A006C0712 /* LocationManagerViewController.m */,
 				BA4EA3201B305C3500E9896E /* Main.storyboard */,
 				BA4EA3231B305C3500E9896E /* Images.xcassets */,
 				BA4EA3251B305C3500E9896E /* LaunchScreen.xib */,
@@ -299,6 +308,7 @@
 				BA4EA31F1B305C3500E9896E /* ViewController.m in Sources */,
 				BA4EA31C1B305C3500E9896E /* AppDelegate.m in Sources */,
 				BA4D3B0C1B31BFD000C689D8 /* SlackRequestManager.m in Sources */,
+				BA5D2CE91B34864A006C0712 /* LocationManagerViewController.m in Sources */,
 				BA4EA3191B305C3500E9896E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

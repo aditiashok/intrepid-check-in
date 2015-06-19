@@ -12,7 +12,6 @@
     BOOL _didStartMonitoringRegion;
 }
 
-- (void) messageSlack: (NSString *) message;
 
 
 @end

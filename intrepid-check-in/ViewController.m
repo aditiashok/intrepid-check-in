@@ -12,6 +12,7 @@
 @import CoreLocation;
 @import Foundation;
 @import UIKit;
+@import MapKit;
 
 @interface ViewController ()
 
@@ -48,18 +49,14 @@
         [self.locationManager requestAlwaysAuthorization];
     }
     
-    [self.startButton setBackgroundColor:[UIColor grayColor]];
-    [self.stopButton setBackgroundColor:[UIColor grayColor]];
+    [self.startButton setBackgroundColor:[UIColor blackColor]];
+    [self.stopButton setBackgroundColor:[UIColor blackColor]];
     
     [self enterUsername];
     
     
 
 
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Alert View Delegate Methods
@@ -76,7 +73,8 @@
 
 
 #pragma mark - Location Manger Delegate Methods
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error"
                                                         message:@"There was an error retrieving your location" delegate:nil
                                                         cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -87,8 +85,8 @@
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    [self sendNotificiation:@"Entering Intrepid"];
-    [self sendAlert:@"Entering Intrepid"];
+    [self sendNotificiation:@"You're at Intrepid!"];
+    [self sendAlert:@"You're at Intrepid!"];
     [self messageSlack:@"I'm here!" :self.name];
     
 }
@@ -155,10 +153,15 @@
     [alertView show];
 }
 
+
 #pragma mark - button actions
 - (IBAction)startMonitoringLocation:(id)sender {
-    [self.stopButton setBackgroundColor:[UIColor grayColor]];
-    [self.startButton setBackgroundColor:[UIColor greenColor]];
+    
+    [self.stopButton setBackgroundColor:[UIColor blackColor]];
+    [self.startButton setBackgroundColor:[UIColor blueColor]];
+
+    //[self.locationManager requestStateForRegion:self.intrepidOffice];
+
     
     [self.locationManager startUpdatingLocation];
     [self.locationManager startMonitoringForRegion:self.intrepidOffice];
@@ -166,8 +169,8 @@
 }
 
 - (IBAction)stopMonitoringLocation:(id)sender {
-    [self.startButton setBackgroundColor:[UIColor grayColor]];
-    [self.stopButton setBackgroundColor:[UIColor greenColor]];
+    [self.startButton setBackgroundColor:[UIColor blackColor]];
+    [self.stopButton setBackgroundColor:[UIColor blueColor]];
     [self.locationManager stopMonitoringForRegion:self.intrepidOffice];
     [self.locationManager stopUpdatingLocation];
     

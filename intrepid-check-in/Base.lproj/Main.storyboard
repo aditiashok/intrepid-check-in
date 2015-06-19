@@ -17,28 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebh-Zs-SNW">
-                                <rect key="frame" x="213" y="263" width="175" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebh-Zs-SNW">
+                                <rect key="frame" x="213" y="401" width="175" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hry-rf-4OK"/>
+                                </constraints>
                                 <state key="normal" title="Start Monitoring Location">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="startMonitoringLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G4m-W9-7d4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIj-z9-i2T">
-                                <rect key="frame" x="213" y="326" width="174" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIj-z9-i2T">
+                                <rect key="frame" x="213" y="465" width="174" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ugb-Nz-JIu"/>
+                                </constraints>
                                 <state key="normal" title="Stop Monitoring Location">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="stopMonitoringLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cKh-sM-a0h"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="intrepid-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="5zk-nv-fdd">
-                                <rect key="frame" x="144" y="149" width="331" height="89"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intrepid-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="5zk-nv-fdd">
+                                <rect key="frame" x="35" y="288" width="549" height="113"/>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ar3-d9-8Yv">
+                                <rect key="frame" x="189" y="107" width="240" height="128"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -47,8 +56,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5zk-nv-fdd" secondAttribute="trailing" id="7AS-4i-wkz"/>
                             <constraint firstAttribute="centerX" secondItem="ebh-Zs-SNW" secondAttribute="centerX" constant="-0.5" id="H6H-Sx-5It"/>
                             <constraint firstAttribute="centerX" secondItem="5zk-nv-fdd" secondAttribute="centerX" constant="-9.5" id="MDX-Ze-uCI"/>
-                            <constraint firstItem="5zk-nv-fdd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="129" id="bua-qS-btd"/>
+                            <constraint firstItem="Ar3-d9-8Yv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QH9-6Y-afd"/>
+                            <constraint firstAttribute="trailing" secondItem="Ar3-d9-8Yv" secondAttribute="trailing" id="ZNv-rc-zhF"/>
                             <constraint firstItem="ebh-Zs-SNW" firstAttribute="top" secondItem="5zk-nv-fdd" secondAttribute="bottom" id="f3L-3y-rLF"/>
+                            <constraint firstItem="5zk-nv-fdd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="268" id="mcF-J1-myf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NIj-z9-i2T" secondAttribute="bottom" constant="105" id="tpf-3h-YFj"/>
                         </constraints>
                     </view>
                     <connections>
